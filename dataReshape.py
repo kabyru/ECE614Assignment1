@@ -58,7 +58,8 @@ for i in range(trainingLen,lenData):
 print(testDataOutputs)
 #########################################################################
 
-
+trainDataInputs = np.asarray(trainDataInputs, dtype=np.float64)
+print(trainDataInputs)
 
 
 
