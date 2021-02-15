@@ -8,7 +8,7 @@ with open('Real-estate-valuation-data-set.csv', newline='') as f:
 
 extractDataInputs = []
 for i in range(1,len(data)):
-    extractDataInputs.append(data[i][1:7])
+    extractDataInputs.append(data[i][2:7])
 
 print(extractDataInputs)
 
@@ -77,5 +77,22 @@ print("trainDataOutputs",trainDataOutputs.shape)
 testDataOutputs = np.atleast_2d(testDataOutputs).T
 print("testDataOutputs",testDataOutputs.shape)
 
-#https://stackoverflow.com/questions/26850355/converting-list-to-numpy-array
-#To-Do: convert these lists into numpy arrays for Keras input. See: Lab 1 Code Data Reshaping
+#Now, we need to NORMALIZE THE INPUT AND OUTPUT DATA.
+from sklearn import preprocessing
+
+scalerTrainDataInputs = preprocessing.StandardScaler().fit(trainDataInputs)
+trainDataInputs_scaled = scalerTrainDataInputs.transform(trainDataInputs)
+
+scalerTestDataInputs = preprocessing.StandardScaler().fit(testDataInputs)
+testDataInputs_scaled = scalerTestDataInputs.transform(testDataInputs)
+
+scalerTrainDataOutputs = preprocessing.StandardScaler().fit(trainDataOutputs)
+trainDataOutputs_scaled = scalerTrainDataOutputs.transform(trainDataOutputs)
+
+scalerTestDataOutputs = preprocessing.StandardScaler().fit(testDataOutputs)
+testDataOutputs_scaled = scalerTestDataOutputs.transform(testDataOutputs)
+
+print(trainDataInputs_scaled)
+print(testDataInputs_scaled)
+print(trainDataOutputs_scaled)
+print(testDataOutputs_scaled)
