@@ -15,3 +15,6 @@ for i in range(1,len(data)):
     extractDataOutputs.append(data[i][7])
 
 print(extractDataOutputs)
+
+#https://stackoverflow.com/questions/26850355/converting-list-to-numpy-array
+#To-Do: convert these lists into numpy arrays for Keras input. See: Lab 1 Code Data Reshaping
